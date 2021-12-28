@@ -1,4 +1,4 @@
-import processing.sound.*;
+//import processing.sound.*;
 
 int numberOfQuestion = 20;
 int numberOfCollumn = 4;
@@ -17,8 +17,8 @@ void setup() {
     q.setup();
   }
   
-  SoundFile soundFile = new SoundFile(this, "../data/music/bgMusic.mp3");
-  soundFile.loop();
+  //SoundFile soundFile = new SoundFile(this, "../data/music/bgMusic.mp3");
+  //soundFile.loop();
 }
 
 void draw() {
