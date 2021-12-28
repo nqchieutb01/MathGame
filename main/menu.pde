@@ -6,7 +6,11 @@ class Menu {
   void setup() {
     for(int j = 0; j<numberOfRow; j++) {
       for(int i = 0; i<numberOfCollumn; i++) {
-        page.add(new RectButton("Quiz " + (i+j*numberOfCollumn), 400 + i * 200, 200 + j * 100, 30));
+        int p_th = (i+j*numberOfCollumn);
+        String bText = "Quiz " + p_th;
+        if (p_th < 10)
+          bText += "  ";
+        page.add(new RectButton(bText , 400 + i * 200, 200 + j * 100, 30));
       }
     }
     bg = loadImage("../data/img/menuBG.jpg");
