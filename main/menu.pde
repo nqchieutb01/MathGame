@@ -4,8 +4,8 @@ class Menu {
   PImage bg;
   
   void setup() {
-    for(int i = 0; i<numberOfCollumn; i++) {
-      for(int j = 0; j<numberOfRow; j++) {
+    for(int j = 0; j<numberOfRow; j++) {
+      for(int i = 0; i<numberOfCollumn; i++) {
         page.add(new RectButton("Quiz " + (i+j*numberOfCollumn), 400 + i * 200, 200 + j * 100, 30));
       }
     }
