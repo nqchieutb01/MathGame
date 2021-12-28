@@ -22,3 +22,43 @@ mousePressed: xử lý các click của chuột
 => trước khi commit kiểm tra ko sửa nội dung dư thừa, không thêm space/ xuống dòng những chỗ không cần thiết, nếu sửa gì không liên quan đến commit thì tạo commit riêng
 
 => đặt tên biến dễ đọc/ dễ hiểu/ tránh đặt biến global có thể conflix với người khác
+
+# Phân công
+
+40 câu
+
+chương 11
+
+4 vd 
+14 bt 5-18
+
+đặt tên 
+vd:
+file question11_1a
+nhánh question11_1a
+param q11_1a
+
+
+loại 1: chọn 4 đáp án -> vẽ hình giải thích
+1a 2a 2b 3b 9b 
+
+Hoàng Gia 1a
+
+loại 2: suy nghĩ
+3a 4b
+
+Dũng 3a
+
+loại 3: tạo cách chọn
+4a 1b 5b 6b 7b 8b 10b 11b 12b 13b 14b
+
+Chiến 4a kéo 3 số 1 2 3 vào ô
+Chiều 6b vẽ hình kia xong kéo
+
+chương 12 Bắc 
+đặt tên file question12_1
+
+6 vd
+16bt 7-22
+
+chọn 4 đáp án -> lời giải
