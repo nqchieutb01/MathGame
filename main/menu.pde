@@ -4,20 +4,33 @@ class Menu {
   PImage bg;
   
   void setup() {
-    for(int j = 0; j<numberOfRow; j++) {
-      for(int i = 0; i<numberOfCollumn; i++) {
-        int p_th = (i+j*numberOfCollumn);
-        String bText = "Quiz " + p_th;
-        if (p_th < 10)
-          bText += "  ";
-        page.add(new RectButton(bText , 400 + i * 200, 200 + j * 100, 30));
+    for(int j = 0; j<3; j++) {
+      for(int i = 0; i<6; i++) {
+        int p_th = (i+j*6 + 1);
+        if (p_th <= 18) {
+          String bText = "Quiz 11." + p_th;
+          if (p_th < 10)
+            bText += "  ";
+          page.add(new RectButton(bText , 350 + i * 160, 100 + j * 90, 25));
+        }
+      }
+    }
+
+    for(int j = 0; j<4; j++) {
+      for(int i = 0; i<6; i++) {
+        int p_th = (i+j*6 + 1);
+        if (p_th <= 22) {
+          String bText = "Quiz 12." + p_th;
+          if (p_th < 10)
+            bText += "  ";
+          page.add(new RectButton(bText , 350 + i * 160, 400 + j * 90, 25));
+        }
       }
     }
     bg = loadImage("../data/img/menuBG.jpg");
   }
   
   void draw() {
-    
     background(bg);
     for(RectButton button : page) {
       button.draw();
@@ -27,7 +40,7 @@ class Menu {
   void mousePressed() {
     for(int i=0; i<page.size();i++) {
       if(page.get(i).clicked()) {
-        currentPage = "Q_" + i;
+        currentPage = page.get(i).b_text;
       }
     }
   }
