@@ -1,4 +1,4 @@
-import processing.sound.*;
+// import processing.sound.*;
 
 int numberOfQuestion = 20;
 int numberOfCollumn = 4;
@@ -13,12 +13,13 @@ void setup() {
   size(1366, 768);
   menu.setup();
   question.add(new Question0());
+  question.add(new Question6b()) ; 
   for (Question q : question){
     q.setup();
   }
   
-  SoundFile soundFile = new SoundFile(this, "../data/music/bgMusic.mp3");
-  soundFile.loop();
+  // SoundFile soundFile = new SoundFile(this, "../data/music/bgMusic.mp3");
+  // soundFile.loop();
 }
 
 void draw() {
@@ -30,6 +31,9 @@ void draw() {
     case "Q_0":
       question.get(0).draw();
       break;
+    case "Q_1":
+      question.get(1).draw();
+      break;
   }
 }
 
@@ -40,6 +44,9 @@ void mousePressed() {
       break;
     case "Q_0":
       question.get(0).mousePressed();
+      break;
+    case "Q_1":
+      question.get(1).mousePressed();
       break;
   }
 }
