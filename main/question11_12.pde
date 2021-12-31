@@ -11,7 +11,73 @@ class ControlButton extends RectButton{
         super(_text, _x, _y, _text_size, _text_size * 0.8, _text_size * 0.8);
     }
 }
+class Robot{
+    int x = 0 ; 
+    int y = 0 ;
+    int armAngle = 0;
+    int angleChange = 5;
+    final int ANGLE_LIMIT = 135;
 
+    void setup()
+    {
+      // smooth();
+      // frameRate(30);
+    }
+
+    void draw()
+    {
+      // background(255);
+      pushMatrix();
+      translate(50+x, 50+y); // place robot so arms are always on screen
+      drawRobot();
+      armAngle += angleChange;
+
+      // if the arm has moved past its limit,
+      // reverse direction and set within limits.
+      if (armAngle > ANGLE_LIMIT || armAngle < 0)
+      {
+        angleChange = -angleChange;
+        armAngle += angleChange;
+      }
+      popMatrix();
+    }
+
+    void drawRobot()
+    {
+      translate(850, 300);
+      noStroke();
+      fill(38, 38, 200);
+      rect(20+x, 0+y, 38, 30); // head
+      rect(14+x, 32+y, 50, 50); // body
+      drawLeftArm();
+      drawRightArm();
+      rect(22+x, 84+y, 16, 50); // left leg
+      rect(40+x, 84+y, 16, 50); // right leg
+
+      fill(222, 222, 249);
+      ellipse(30+x, 12+y, 12, 12); // left eye
+      ellipse(47+x, 12+y, 12, 12);  // right eye
+    }
+
+    void drawLeftArm()
+    {
+      pushMatrix();
+      translate(12, 32);
+      rotate(radians(armAngle));
+      rect(-12+x, 0+y, 12, 37); // left arm
+      popMatrix();
+    }
+
+    void drawRightArm()
+    {
+      pushMatrix();
+      translate(66, 32);
+      rotate(radians(-armAngle));
+      rect(0+x, 0+y, 12, 37); // right arm
+      popMatrix();
+    }
+
+}
 class gameState_11_12{
     int current_1   , current_2 , current_5 ;
     int currentTotal; 
@@ -45,8 +111,6 @@ class gameState_11_12{
           this.currentTotal = current_1 + current_2 * 2 + current_5 * 5 ; 
           this.state = current_1*100 + current_2 * 10 + current_5 * 1;
     }
-
-
 }
 
 class MainModel11_12 {
@@ -55,7 +119,8 @@ class MainModel11_12 {
     int y_start = 150;
     int segment = 100;
     int currentLine = 0 ;
-
+    boolean FINISHED = false;
+    Robot robot = new Robot();
     int TOTAL = 7 ; 
     Set<Integer> ANSWER = new HashSet<Integer>();
     ArrayList<gameState_11_12> gameState = new ArrayList<gameState_11_12>();
@@ -72,12 +137,18 @@ class MainModel11_12 {
             ANSWER.add(320) ;
             ANSWER.add(201) ;
             ANSWER.add(130) ;
-            ANSWER.add(11) ;
+            ANSWER.add(11)  ;
             gameState.add(new gameState_11_12());
     }
 
     void draw(){
 
+        if(FINISHED){
+          textSize(56);
+          text("CONGRATS", 850, y_start+50);
+        }
+        robot.setup();
+        robot.draw();
         noFill();
         stroke(0);
         strokeWeight(1);
@@ -94,7 +165,7 @@ class MainModel11_12 {
                       rect(x_start + segment*i, y_start + segment* j /2, segment, segment/2);
                     }
         }
-
+        textSize(32);
         fill(0,0,255);
         text("Số tờ 1$", x_start, y_start, segment, segment/2);
         text("Số tờ 2$", x_start+segment, y_start, segment, segment/2);
@@ -141,6 +212,9 @@ class MainModel11_12 {
                             currentLine += 1 ; 
                             gameState.add(new gameState_11_12());
                         }
+                  }
+                  if(ANSWER.size()==0){
+                    FINISHED = true;  
                   }
         }
     }
