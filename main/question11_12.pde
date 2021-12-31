@@ -33,13 +33,13 @@ class gameState_11_12{
     }
 
     void increase(int i){
-          if(i==1){
+          if(i==1 && this.current_1 <7){
             this.current_1 += 1;
           }
-          if(i==2){
+          if(i==2 && this.current_2 <3){
             this.current_2 += 1; 
           }
-          if(i==5){
+          if(i==5 && this.current_5 <1){
             this.current_5 += 1;
           }
           this.currentTotal = current_1 + current_2 * 2 + current_5 * 5 ; 
@@ -72,7 +72,7 @@ class MainModel11_12 {
             ANSWER.add(320) ;
             ANSWER.add(201) ;
             ANSWER.add(130) ;
-            ANSWER.add(011) ;
+            ANSWER.add(11) ;
             gameState.add(new gameState_11_12());
     }
 
@@ -137,11 +137,11 @@ class MainModel11_12 {
                   int current_state = gameState.get(currentLine).state ;
                   if(ANSWER.contains(current_state)){
                         ANSWER.remove(current_state);
-                        currentLine += 1 ; 
-                        gameState.add(new gameState_11_12());
-                       
+                        if(ANSWER.size()!=0){
+                            currentLine += 1 ; 
+                            gameState.add(new gameState_11_12());
+                        }
                   }
-                 
         }
     }
 }
