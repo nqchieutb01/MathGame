@@ -128,7 +128,7 @@ class MainModel11_12 {
     ControlButton button_1 = new ControlButton("1 $", 350, 575, 20);
     ControlButton button_2 = new ControlButton("2 $", 500, 575, 20);
     ControlButton button_5 = new ControlButton("5 $", 650, 575, 20);
-    ControlButton button_reset = new ControlButton("Reset", 800, 575, 20);
+    ControlButton button_reset = new ControlButton("Đi lại", 800, 575, 20);
     // ControlButton button_solution = new ControlButton("đáp án", 1280, 100, 20);
 
     void setup() {
@@ -165,7 +165,7 @@ class MainModel11_12 {
                       rect(x_start + segment*i, y_start + segment* j /2, segment, segment/2);
                     }
         }
-        textSize(32);
+        textSize(28);
         fill(0,0,255);
         text("Số tờ 1$", x_start, y_start, segment, segment/2);
         text("Số tờ 2$", x_start+segment, y_start, segment, segment/2);
